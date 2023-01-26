@@ -9,7 +9,7 @@ If you would like it to work for Bootstrap 4, you will need to define your own c
 itemClass="page-item"
 linkClass="page-link"
 ```
-* NOTE: This component was derived from [react-js-pagination](https://www.npmjs.com/), which apparently is no longer maintained for longer than 2 years and has a high risk 
+* NOTE: This component was derived from [react-js-pagination](https://github.com/wwwaiser/react-js-pagination), which apparently is no longer maintained for longer than 2 years and has a high risk 
 vulnerability as reported by "npm audit" related to tar dependency.  This dependency has been removed in this "replace-js-pagination"
 
 ## Installation
