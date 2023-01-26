@@ -46,7 +46,7 @@
     "react-component"
   ],
   "author": "Felipe Carrillo (https://github.com/felipecarrillo100)",
-  "license": "CC0-1.0",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/felipecarrillo100/replace-js-pagination/issues"
   },
