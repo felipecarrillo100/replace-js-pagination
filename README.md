@@ -1,8 +1,4 @@
-[![Build Status](https://travis-ci.org/vayser/react-js-pagination.svg?branch=master)](https://travis-ci.org/vayser/react-js-pagination)
-
-[![NPM](https://nodei.co/npm/react-js-pagination.png?downloads=true)](https://nodei.co/npm/react-js-pagination/)
-
-# react-js-pagination
+# replace-js-pagination
 
 **A ReactJS [dumb](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0) component to render a pagination.**
 
@@ -16,10 +12,10 @@ linkClass="page-link"
 
 ## Installation
 
-Install `react-js-pagination` with [npm](https://www.npmjs.com/):
+Install `replace-js-pagination` with [npm](https://www.npmjs.com/):
 
 ```
-$ npm install react-js-pagination
+$ npm install replace-js-pagination
 ```
 
 ## Usage
@@ -29,7 +25,7 @@ Very easy to use. Just provide props with total amount of things that you want t
 ```js
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import Pagination from "react-js-pagination";
+import Pagination from "replace-js-pagination";
 require("bootstrap/less/bootstrap.less");
 
 class App extends Component {
@@ -64,7 +60,6 @@ ReactDOM.render(<App />, document.getElementById("root"));
 
 ```
 
-Check [Live example](http://vayser.github.io/react-js-pagination)
 
 ![Example](https://i.gyazo.com/9af4c2b9e20aa95a67597d3ca64efde3.png)
 
