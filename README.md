@@ -61,7 +61,7 @@ ReactDOM.render(<App />, document.getElementById("root"));
 ```
 
 
-![Example](https://i.gyazo.com/9af4c2b9e20aa95a67597d3ca64efde3.png)
+![Example](https://github.com/felipecarrillo100/replace-js-pagination/raw/main/pagination.png)
 
 ## Params
 
