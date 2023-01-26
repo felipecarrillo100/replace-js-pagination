@@ -60,6 +60,7 @@ ReactDOM.render(<App />, document.getElementById("root"));
 
 ```
 
+A small example is provided here: https://codesandbox.io/s/replace-js-pagination-276mpq?file=/src/App.js
 
 ![Example](https://github.com/felipecarrillo100/replace-js-pagination/raw/main/pagination.png)
 
