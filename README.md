@@ -1,14 +1,16 @@
 # replace-js-pagination
 
-**A ReactJS [dumb](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0) component to render a pagination.**
+**A ReactJS component to render a pagination.**
 
 The component comes with no built-in styles. HTML layout compatible with [Bootstrap 3](https://getbootstrap.com/docs/3.4/components/#pagination) pagination stylesheets.
 
-If you would like it to work for Bootstrap 4, you will need to add 2 additional props when using this component:
+If you would like it to work for Bootstrap 4, you will need to define your own css styling or to add 2 additional props when using this component:
 ```
 itemClass="page-item"
 linkClass="page-link"
 ```
+* NOTE: This component was derived from [react-js-pagination](https://www.npmjs.com/), which apparently is no longer maintained for longer than 2 years and has a high risk 
+vulnerability as reported by "npm audit" related to tar dependency.  This dependency has been removed in this "replace-js-pagination"
 
 ## Installation
 
@@ -23,40 +25,43 @@ $ npm install replace-js-pagination
 Very easy to use. Just provide props with total amount of things that you want to display on the page.
 
 ```js
-import React, { Component } from "react";
-import ReactDOM from "react-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import React, { useState } from "react";
+
+import { Row, Container } from "react-bootstrap";
 import Pagination from "replace-js-pagination";
-require("bootstrap/less/bootstrap.less");
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      activePage: 15
+const App = () => {
+    const [activePage, setActivePage] = useState(16);
+
+    const handlePageChange = (pageNumber) => {
+        setActivePage(pageNumber);
     };
-  }
-
-  handlePageChange(pageNumber) {
-    console.log(`active page is ${pageNumber}`);
-    this.setState({activePage: pageNumber});
-  }
-
-  render() {
     return (
-      <div>
-        <Pagination
-          activePage={this.state.activePage}
-          itemsCountPerPage={10}
-          totalItemsCount={450}
-          pageRangeDisplayed={5}
-          onChange={this.handlePageChange.bind(this)}
-        />
-      </div>
+        <>
+            <Container>
+                <Row>
+                    <h1>Testing pagination: Page: {activePage} </h1>
+                </Row>
+                <Row>
+                    <Pagination
+                        itemClass="page-item"
+                        linkClass="page-link"
+                        activePage={activePage}
+                        itemsCountPerPage={10}
+                        totalItemsCount={450}
+                        pageRangeDisplayed={5}
+                        onChange={handlePageChange}
+                    />
+                </Row>
+            </Container>
+        </>
     );
-  }
-}
+};
 
-ReactDOM.render(<App />, document.getElementById("root"));
+export default App;
+
 
 ```
 

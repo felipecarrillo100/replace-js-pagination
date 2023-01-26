@@ -1,6 +1,6 @@
 {
   "name": "replace-js-pagination",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Replacement for react-js-pagination. Simple, easy to use component for pagination. Compatible with bootstrap paginator stylesheets",
   "main": "./dist/Pagination.js",
   "types": "dist/index.d.ts",
