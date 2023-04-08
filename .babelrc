@@ -1,9 +1,30 @@
 {
-  "presets": ["@babel/preset-env", "@babel/preset-react"],
-  "plugins": [
-    "@babel/plugin-proposal-class-properties"
-  ],
-  "ignore": [
-    "**/*.test.js"
-  ]
+  "env": {
+    "development": {
+      "presets": ["@babel/preset-env", "@babel/preset-react"],
+      "plugins": [
+        "@babel/plugin-proposal-class-properties"
+      ],
+      "ignore": [
+        "**/*.test.js"
+      ]
+    },
+    "production": {
+      "presets": ["@babel/preset-env", "@babel/preset-react"],
+      "plugins": [
+        "@babel/plugin-proposal-class-properties"
+      ],
+      "ignore": [
+        "**/*.test.js"
+      ]
+    },
+    "test": {
+      "presets": ["@babel/preset-env", "@babel/preset-react"],
+      "plugins": [
+        "@babel/plugin-proposal-class-properties"
+      ],
+      "ignore": [
+      ]
+    }
+  }
 }
