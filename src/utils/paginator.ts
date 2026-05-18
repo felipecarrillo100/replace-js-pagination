@@ -33,7 +33,7 @@ export class Paginator {
     }
 
     let first_page = Math.max(1, current_page - Math.floor(this.pageRangeDisplayed / 2));
-    let last_page = Math.min(total_pages, first_page + this.pageRangeDisplayed - 1);
+    const last_page = Math.min(total_pages, first_page + this.pageRangeDisplayed - 1);
 
     if (last_page - first_page + 1 < this.pageRangeDisplayed) {
       first_page = Math.max(1, last_page - this.pageRangeDisplayed + 1);

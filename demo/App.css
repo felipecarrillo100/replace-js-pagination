@@ -4,23 +4,23 @@
   --bg-panel: #0f121d;
   --border-color: #1e2538;
   --border-light: rgba(255, 255, 255, 0.05);
-  
+
   --text-main: #f8fafc;
   --text-muted: #94a3b8;
   --text-dim: #64748b;
-  
+
   --accent-color: #38bdf8; /* Clean Sky Blue */
   --accent-glow: rgba(56, 189, 248, 0.15);
   --accent-purple: #818cf8;
-  
+
   --status-stable-bg: rgba(16, 185, 129, 0.08);
   --status-stable-text: #34d399;
   --status-stable-border: rgba(16, 185, 129, 0.2);
-  
+
   --status-beta-bg: rgba(245, 158, 11, 0.08);
   --status-beta-text: #fbbf24;
   --status-beta-border: rgba(245, 158, 11, 0.2);
-  
+
   --status-experimental-bg: rgba(239, 68, 68, 0.08);
   --status-experimental-text: #f87171;
   --status-experimental-border: rgba(239, 68, 68, 0.2);
@@ -517,9 +517,9 @@ ul.material-pagination li:hover:not(.disabled) a {
 ul.material-pagination li.active a {
   background: #1976d2; /* Classic Material Blue */
   color: #ffffff;
-  box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2), 
-              0px 2px 2px 0px rgba(0,0,0,0.14), 
-              0px 1px 5px 0px rgba(0,0,0,0.12);
+  box-shadow: 0 3px 1px -2px rgba(0,0,0,0.2),
+              0 2px 2px 0 rgba(0,0,0,0.14),
+              0 1px 5px 0 rgba(0,0,0,0.12);
   font-weight: 600;
 }
 
