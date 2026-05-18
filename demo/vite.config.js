@@ -7,7 +7,7 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      'replace-js-pagination': path.resolve(__dirname, '../src/index.ts'),
+      'replace-js-pagination': path.resolve(__dirname, '../dist/index.mjs'),
     },
     dedupe: ['react', 'react-dom'],
   },

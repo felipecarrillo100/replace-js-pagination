@@ -21,8 +21,7 @@
 
     "baseUrl": ".",
     "paths": {
-      "replace-js-pagination": ["../src/index.ts"],
-      "*": ["../src/*"]
+      "replace-js-pagination": ["../dist/index.d.ts"]
     }
   },
   "include": ["."],
