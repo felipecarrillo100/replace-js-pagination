@@ -9,6 +9,7 @@ export default defineConfig({
     alias: {
       'replace-js-pagination': path.resolve(__dirname, '../src/index.ts'),
     },
+    dedupe: ['react', 'react-dom'],
   },
   server: {
     port: 8000,
