@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import { useState, useMemo } from "react";
 import Pagination from "replace-js-pagination";
 import "./App.css";
 
@@ -70,6 +70,12 @@ export default function App() {
   const [pageRange, setPageRange] = useState<number>(5);
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [activeTab, setActiveTab] = useState<"table" | "styles" | "docs">("table");
+
+  // Show code snippets state
+  const [showSaaSCode, setShowSaaSCode] = useState<boolean>(false);
+  const [showBootstrapCode, setShowBootstrapCode] = useState<boolean>(false);
+  const [showMinimalCode, setShowMinimalCode] = useState<boolean>(false);
+  const [showMaterialCode, setShowMaterialCode] = useState<boolean>(false);
 
   // Filtering products
   const filteredProducts = useMemo(() => {
@@ -262,11 +268,43 @@ export default function App() {
 
         {activeTab === "styles" && (
           <div className="styles-showcase">
+            {/* Theme 1: SaaS Slate */}
             <div className="showcase-card">
               <div className="showcase-header">
-                <h3>SaaS Slate Theme</h3>
-                <p>Clean, flat, high-density pagination designed for modern dashboard environments.</p>
+                <div>
+                  <h3>SaaS Slate Theme</h3>
+                  <p>Clean, flat, high-density pagination designed for modern dashboard environments.</p>
+                </div>
+                <button
+                  className="code-toggle-btn"
+                  onClick={() => setShowSaaSCode(!showSaaSCode)}
+                >
+                  {showSaaSCode ? " hide code" : "</> view code"}
+                </button>
               </div>
+
+              {showSaaSCode && (
+                <div className="code-snippet-block">
+                  <pre>
+                    <code>{`<Pagination
+  activePage={currentPage}
+  itemsCountPerPage={10}
+  totalItemsCount={120}
+  pageRangeDisplayed={5}
+  onChange={handlePageChange}
+  innerClass="enterprise-pagination"
+  itemClass="page-item"
+  activeClass="active"
+  disabledClass="disabled"
+  firstPageText="First"
+  lastPageText="Last"
+  prevPageText="Previous"
+  nextPageText="Next"
+/>`}</code>
+                  </pre>
+                </div>
+              )}
+
               <div className="showcase-render">
                 <Pagination
                   activePage={3}
@@ -286,11 +324,40 @@ export default function App() {
               </div>
             </div>
 
+            {/* Theme 2: Classic Bootstrap */}
             <div className="showcase-card">
               <div className="showcase-header">
-                <h3>Traditional Bootstrap Theme</h3>
-                <p>Ensures perfect backward compatibility with classic Bootstrap 3/4/5 styled wrappers.</p>
+                <div>
+                  <h3>Traditional Bootstrap Theme</h3>
+                  <p>Ensures perfect backward compatibility with classic Bootstrap 3/4/5 styled wrappers.</p>
+                </div>
+                <button
+                  className="code-toggle-btn"
+                  onClick={() => setShowBootstrapCode(!showBootstrapCode)}
+                >
+                  {showBootstrapCode ? " hide code" : "</> view code"}
+                </button>
               </div>
+
+              {showBootstrapCode && (
+                <div className="code-snippet-block">
+                  <pre>
+                    <code>{`<Pagination
+  activePage={currentPage}
+  itemsCountPerPage={10}
+  totalItemsCount={50}
+  pageRangeDisplayed={5}
+  onChange={handlePageChange}
+  innerClass="pagination bootstrap-classic"
+  itemClass="page-item"
+  linkClass="page-link"
+  activeClass="active"
+  disabledClass="disabled"
+/>`}</code>
+                  </pre>
+                </div>
+              )}
+
               <div className="showcase-render">
                 <Pagination
                   activePage={2}
@@ -307,11 +374,39 @@ export default function App() {
               </div>
             </div>
 
+            {/* Theme 3: Minimalist Dots */}
             <div className="showcase-card">
               <div className="showcase-header">
-                <h3>Minimalist Dot Theme</h3>
-                <p>Sleek, round numerical buttons with subtle hover scaling and clear boundaries.</p>
+                <div>
+                  <h3>Minimalist Dot Theme</h3>
+                  <p>Sleek, round numerical buttons with subtle hover scaling and clear boundaries.</p>
+                </div>
+                <button
+                  className="code-toggle-btn"
+                  onClick={() => setShowMinimalCode(!showMinimalCode)}
+                >
+                  {showMinimalCode ? " hide code" : "</> view code"}
+                </button>
               </div>
+
+              {showMinimalCode && (
+                <div className="code-snippet-block">
+                  <pre>
+                    <code>{`<Pagination
+  activePage={currentPage}
+  itemsCountPerPage={10}
+  totalItemsCount={80}
+  pageRangeDisplayed={5}
+  onChange={handlePageChange}
+  innerClass="minimal-pagination"
+  itemClass="dot-item"
+  activeClass="active"
+  disabledClass="disabled"
+/>`}</code>
+                  </pre>
+                </div>
+              )}
+
               <div className="showcase-render">
                 <Pagination
                   activePage={4}
@@ -323,6 +418,62 @@ export default function App() {
                   itemClass="dot-item"
                   activeClass="active"
                   disabledClass="disabled"
+                />
+              </div>
+            </div>
+
+            {/* Theme 4: Material UI Style */}
+            <div className="showcase-card">
+              <div className="showcase-header">
+                <div>
+                  <h3>Material UI Style</h3>
+                  <p>A zero-dependency Material design theme featuring elevated circular nodes and primary ink ripple hover overlays.</p>
+                </div>
+                <button
+                  className="code-toggle-btn"
+                  onClick={() => setShowMaterialCode(!showMaterialCode)}
+                >
+                  {showMaterialCode ? " hide code" : "</> view code"}
+                </button>
+              </div>
+
+              {showMaterialCode && (
+                <div className="code-snippet-block">
+                  <pre>
+                    <code>{`<Pagination
+  activePage={currentPage}
+  itemsCountPerPage={10}
+  totalItemsCount={60}
+  pageRangeDisplayed={5}
+  onChange={handlePageChange}
+  innerClass="material-pagination"
+  itemClass="mui-item"
+  activeClass="active"
+  disabledClass="disabled"
+  firstPageText="«"
+  lastPageText="»"
+  prevPageText="‹"
+  nextPageText="›"
+/>`}</code>
+                  </pre>
+                </div>
+              )}
+
+              <div className="showcase-render">
+                <Pagination
+                  activePage={3}
+                  itemsCountPerPage={10}
+                  totalItemsCount={60}
+                  pageRangeDisplayed={5}
+                  onChange={() => {}}
+                  innerClass="material-pagination"
+                  itemClass="mui-item"
+                  activeClass="active"
+                  disabledClass="disabled"
+                  firstPageText="«"
+                  lastPageText="»"
+                  prevPageText="‹"
+                  nextPageText="›"
                 />
               </div>
             </div>
