@@ -1,40 +1,61 @@
-// Type definitions for react-js-pagination 3.0
-// Project: https://github.com/vayser/react-js-pagination
-// Definitions by: Ernesto Cruz <https://github.com/netoisc>
-// Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
-// TypeScript Version: 2.8
+import React from 'react';
 
-import * as React from "react";
-
-export interface ReactJsPaginationProps {
+interface PaginationProps {
     totalItemsCount: number;
     onChange: (pageNumber: number) => void;
-    activePage: number;
-    itemsCountPerPage?: number | undefined;
-    pageRangeDisplayed?: number | undefined;
-    prevPageText?: string| React.ReactElement | undefined;
-    nextPageText?: string | React.ReactElement | undefined;
-    lastPageText?: string | React.ReactElement | undefined;
-    firstPageText?: string | React.ReactElement | undefined;
-    disabledClass?: string | undefined;
-    hideDisabled?: boolean | undefined;
-    hideNavigation?: boolean | undefined;
-    innerClass?: string | undefined;
-    itemClass?: string | undefined;
-    itemClassFirst?: string | undefined;
-    itemClassPrev?: string | undefined;
-    itemClassNext?: string | undefined;
-    itemClassLast?: string | undefined;
-    linkClass?: string | undefined;
-    activeClass?: string | undefined;
-    activeLinkClass?: string | undefined;
-    linkClassFirst?: string | undefined;
-    linkClassPrev?: string | undefined;
-    linkClassNext?: string | undefined;
-    linkClassLast?: string | undefined;
-    hideFirstLastPages?: boolean | undefined;
-    getPageUrl?: ((pageNumber: number) => string) | undefined;
+    activePage?: number;
+    itemsCountPerPage?: number;
+    pageRangeDisplayed?: number;
+    prevPageText?: React.ReactNode;
+    nextPageText?: React.ReactNode;
+    lastPageText?: React.ReactNode;
+    firstPageText?: React.ReactNode;
+    disabledClass?: string;
+    hideDisabled?: boolean;
+    hideNavigation?: boolean;
+    innerClass?: string;
+    itemClass?: string;
+    itemClassFirst?: string;
+    itemClassPrev?: string;
+    itemClassNext?: string;
+    itemClassLast?: string;
+    linkClass?: string;
+    activeClass?: string;
+    activeLinkClass?: string;
+    linkClassFirst?: string;
+    linkClassPrev?: string;
+    linkClassNext?: string;
+    linkClassLast?: string;
+    hideFirstLastPages?: boolean;
+    getPageUrl?: (pageNumber: number) => string;
 }
-declare const Pagination: React.ClassicComponentClass<ReactJsPaginationProps>;
+declare const Pagination: React.FC<PaginationProps>;
 
-export default Pagination;
+interface PageProps {
+    pageText: React.ReactNode;
+    pageNumber: number;
+    onClick: (pageNumber: number) => void;
+    isActive?: boolean;
+    isDisabled?: boolean;
+    activeClass?: string;
+    activeLinkClass?: string;
+    itemClass?: string;
+    linkClass?: string;
+    disabledClass?: string;
+    href?: string;
+    ariaLabel?: string;
+}
+declare const Page: React.FC<PageProps>;
+
+interface PaginatorResult {
+    total_pages: number;
+    current_page: number;
+    first_page: number;
+    last_page: number;
+    previous_page: number;
+    next_page: number;
+    has_previous_page: boolean;
+    has_next_page: boolean;
+}
+
+export { Page, type PageProps, Pagination, type PaginationProps, type PaginatorResult, Pagination as default };

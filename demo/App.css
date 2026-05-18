@@ -1,0 +1,536 @@
+/* Enterprise SaaS Styling System */
+:root {
+  --bg-app: #080a10;
+  --bg-panel: #0f121d;
+  --border-color: #1e2538;
+  --border-light: rgba(255, 255, 255, 0.05);
+  
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+  
+  --accent-color: #38bdf8; /* Clean Sky Blue */
+  --accent-glow: rgba(56, 189, 248, 0.15);
+  --accent-purple: #818cf8;
+  
+  --status-stable-bg: rgba(16, 185, 129, 0.08);
+  --status-stable-text: #34d399;
+  --status-stable-border: rgba(16, 185, 129, 0.2);
+  
+  --status-beta-bg: rgba(245, 158, 11, 0.08);
+  --status-beta-text: #fbbf24;
+  --status-beta-border: rgba(245, 158, 11, 0.2);
+  
+  --status-experimental-bg: rgba(239, 68, 68, 0.08);
+  --status-experimental-text: #f87171;
+  --status-experimental-border: rgba(239, 68, 68, 0.2);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-app);
+  color: var(--text-main);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.5;
+  padding: 3rem 1.5rem;
+}
+
+/* App Shell Layout */
+.app-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+/* Header Section */
+.app-header {
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 2rem;
+}
+
+.header-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+.meta-tag {
+  background: rgba(255, 255, 255, 0.04);
+  padding: 0.25rem 0.65rem;
+  border-radius: 4px;
+  border: 1px solid var(--border-light);
+}
+
+.meta-separator {
+  color: var(--text-dim);
+}
+
+.app-header h1 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.75rem;
+}
+
+.app-description {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  font-weight: 300;
+  max-width: 750px;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+/* Tab Bar */
+.tabs-container {
+  display: flex;
+  gap: 1rem;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: -2rem; /* Align with bottom border line */
+}
+
+.tab-link {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--text-muted);
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.75rem 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.tab-link:hover {
+  color: var(--text-main);
+}
+
+.tab-link.active {
+  color: var(--accent-color);
+  border-bottom-color: var(--accent-color);
+}
+
+/* Main Console Container */
+.app-main {
+  background: var(--bg-panel);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+/* Table Workspace Controls */
+.workspace-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  background: rgba(0, 0, 0, 0.1);
+  flex-wrap: wrap;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  min-width: 320px;
+  flex-grow: 1;
+}
+
+.search-icon {
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+.search-input {
+  background: transparent;
+  border: none;
+  color: var(--text-main);
+  font-size: 0.9rem;
+  width: 100%;
+  font-family: inherit;
+}
+
+.search-input:focus {
+  outline: none;
+}
+
+.params-selector {
+  display: flex;
+  gap: 1rem;
+}
+
+.param-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.styled-select {
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 0.4rem 0.75rem;
+  color: var(--text-main);
+  font-size: 0.85rem;
+  font-family: inherit;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.styled-select:focus {
+  border-color: var(--accent-color);
+}
+
+/* SaaS Table Styling */
+.table-container {
+  overflow-x: auto;
+}
+
+.enterprise-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+.enterprise-table th {
+  background: rgba(255, 255, 255, 0.01);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.9rem 1.5rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+}
+
+.enterprise-table td {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.table-row {
+  transition: background 0.15s;
+}
+
+.table-row:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.cell-id {
+  color: var(--text-dim);
+  font-family: monospace;
+  font-size: 0.85rem;
+}
+
+.cell-name {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 500;
+}
+
+.tech-icon {
+  font-size: 1.15rem;
+}
+
+.cell-category {
+  color: var(--text-muted);
+}
+
+/* Status Pill Badges */
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 0.2rem 0.6rem;
+  border-radius: 9999px;
+  letter-spacing: 0.03em;
+}
+
+.status-pill.pill-stable {
+  background: var(--status-stable-bg);
+  color: var(--status-stable-text);
+  border: 1px solid var(--status-stable-border);
+}
+
+.status-pill.pill-beta {
+  background: var(--status-beta-bg);
+  color: var(--status-beta-text);
+  border: 1px solid var(--status-beta-border);
+}
+
+.status-pill.pill-experimental {
+  background: var(--status-experimental-bg);
+  color: var(--status-experimental-text);
+  border: 1px solid var(--status-experimental-border);
+}
+
+.cell-rating {
+  font-weight: 600;
+  color: #f59e0b;
+}
+
+/* Empty Registry State */
+.table-empty {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--text-muted);
+}
+
+.empty-emoji {
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.empty-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 0.25rem;
+}
+
+.empty-sub {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+}
+
+/* SaaS Table Footer Control Bar */
+.table-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 1.5rem;
+  background: rgba(0, 0, 0, 0.1);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-stats {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.footer-stats strong {
+  color: var(--text-main);
+}
+
+/* ENTERPRISE SLATE PAGINATION THEME */
+ul.enterprise-pagination {
+  display: inline-flex;
+  gap: 0.25rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  align-items: center;
+}
+
+ul.enterprise-pagination li {
+  cursor: pointer;
+  user-select: none;
+}
+
+ul.enterprise-pagination li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  height: 32px;
+  padding: 0 0.65rem;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.15s ease;
+}
+
+ul.enterprise-pagination li:hover:not(.disabled) a {
+  color: var(--text-main);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: var(--text-muted);
+}
+
+ul.enterprise-pagination li.active a {
+  background: var(--text-main);
+  border-color: var(--text-main);
+  color: var(--bg-app);
+  font-weight: 600;
+}
+
+ul.enterprise-pagination li.disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+/* THEMES VISUAL SHOWCASE */
+.styles-showcase {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.showcase-card {
+  border: 1px solid var(--border-color);
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.showcase-header h3 {
+  font-size: 1.15rem;
+  color: var(--accent-color);
+  margin-bottom: 0.25rem;
+}
+
+.showcase-header p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+  font-weight: 300;
+}
+
+.showcase-render {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  border: 1px dashed var(--border-color);
+}
+
+/* Minimalist Dot Theme */
+ul.minimal-pagination {
+  display: inline-flex;
+  gap: 0.5rem;
+  list-style: none;
+  align-items: center;
+}
+
+ul.minimal-pagination li {
+  cursor: pointer;
+}
+
+ul.minimal-pagination li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+ul.minimal-pagination li:hover:not(.disabled) a {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-main);
+}
+
+ul.minimal-pagination li.active a {
+  background: var(--accent-color);
+  color: var(--bg-app);
+  font-weight: 700;
+}
+
+ul.minimal-pagination li.disabled {
+  opacity: 0.2;
+  cursor: not-allowed;
+}
+
+/* Classic Bootstrap Theme Compatibility */
+ul.pagination.bootstrap-classic {
+  display: flex;
+  list-style: none;
+  border-radius: 4px;
+}
+
+ul.pagination.bootstrap-classic li {
+  cursor: pointer;
+}
+
+ul.pagination.bootstrap-classic li a {
+  background: #ffffff;
+  border: 1px solid #dee2e6;
+  color: #0d6efd;
+  padding: 0.375rem 0.75rem;
+  display: block;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+ul.pagination.bootstrap-classic li:hover:not(.disabled) a {
+  background: #e9ecef;
+  color: #0a58ca;
+}
+
+ul.pagination.bootstrap-classic li.active a {
+  background: #0d6efd;
+  border-color: #0d6efd;
+  color: #ffffff;
+}
+
+ul.pagination.bootstrap-classic li.disabled a {
+  color: #6c757d;
+  pointer-events: none;
+  background: #ffffff;
+  border-color: #dee2e6;
+}
+
+/* API Docs Workspace */
+.docs-workspace {
+  padding: 2rem;
+}
+
+.docs-workspace .showcase-header {
+  margin-bottom: 2rem;
+}
+
+.docs-workspace td.default-val code {
+  color: var(--accent-purple) !important;
+}
+
+/* Footer Section */
+.app-footer {
+  text-align: center;
+  padding: 2rem 0;
+  border-top: 1px solid var(--border-color);
+  color: var(--text-dim);
+  font-size: 0.85rem;
+}

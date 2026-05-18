@@ -1,102 +1,167 @@
 # replace-js-pagination
 
-**A ReactJS component to render a pagination.**
+**A highly optimized, zero-dependency, and modern React pagination component.**
 
-The component comes with no built-in styles. HTML layout compatible with [Bootstrap 3](https://getbootstrap.com/docs/3.4/components/#pagination) pagination stylesheets.
+Designed as a bit-for-bit, 100% backward-compatible, plug-and-play drop-in replacement for the unmaintained [react-js-pagination](https://github.com/wwwaiser/react-js-pagination) library. Rebuilt from the ground up to support modern React and modern tooling.
 
-If you would like it to work for Bootstrap 4, you will need to define your own css styling or to add 2 additional props when using this component:
-```
-itemClass="page-item"
-linkClass="page-link"
-```
-* NOTE: This component was derived from [react-js-pagination](https://github.com/wwwaiser/react-js-pagination), which apparently is no longer maintained for longer than 2 years and has a high risk 
-vulnerability as reported by "npm audit" related to tar dependency.  This dependency has been removed in this "replace-js-pagination"
+---
+
+## ⚡ What's New in v2.0.0
+
+* **React 18 & 19 Native**: Fully rewritten as hooks-based functional components compatible with **React Strict Mode** and prepared for the **React Compiler** and **React Server Components (RSC)**.
+* **TypeScript Native**: Built entirely in TypeScript. Delivers high-fidelity typings and inline autocompletion popups for your IDE out-of-the-box.
+* **Zero Legacy Bloat**: Completely removed the outdated and unmaintained third-party `"paginator"` mathematical package. Paging computations are now performed by an internal, zero-dependency calculator module, making the bundle tiny (**5.6 kB** packed).
+* **Modern Tooling**: Compiled using **tsup** and powered by **Vite 8** and **Vitest** for robust and instant unit testing.
+* **Dual ESM/CJS Distribution**: Packages standard ES Modules (`dist/index.mjs`) and CommonJS (`dist/index.js`) simultaneously for seamless integration into Vite, Webpack, Next.js, Rollup, or Node runtimes.
+* **Isolated Playground Sandbox**: The interactive preview application has been moved to its own standalone directory (`/demo`) with its own self-contained dependency block, keeping the production source tree perfectly clean.
+
+---
 
 ## Installation
 
-Install `replace-js-pagination` with [npm](https://www.npmjs.com/):
+Install `replace-js-pagination` with your preferred package manager:
 
+```bash
+# npm
+npm install replace-js-pagination
+
+# yarn
+yarn add replace-js-pagination
+
+# pnpm
+pnpm add replace-js-pagination
 ```
-$ npm install replace-js-pagination
-```
+
+---
 
 ## Usage
 
-Very easy to use. Just provide props with total amount of things that you want to display on the page.
+Using `replace-js-pagination` is simple and direct. Just pass the total count of items and your change-event callback. 
 
-```js
-import 'bootstrap/dist/css/bootstrap.min.css';
+### Modern TypeScript Example
 
+```tsx
 import React, { useState } from "react";
-
-import { Row, Container } from "react-bootstrap";
 import Pagination from "replace-js-pagination";
 
-const App = () => {
-    const [activePage, setActivePage] = useState(16);
+// Optional: Import Bootstrap stylesheet if using standard Bootstrap styling
+import "bootstrap/dist/css/bootstrap.min.css";
 
-    const handlePageChange = (pageNumber) => {
-        setActivePage(pageNumber);
-    };
-    return (
-        <>
-            <Container>
-                <Row>
-                    <h1>Testing pagination: Page: {activePage} </h1>
-                </Row>
-                <Row>
-                    <Pagination
-                        itemClass="page-item"
-                        linkClass="page-link"
-                        activePage={activePage}
-                        itemsCountPerPage={10}
-                        totalItemsCount={450}
-                        pageRangeDisplayed={5}
-                        onChange={handlePageChange}
-                    />
-                </Row>
-            </Container>
-        </>
-    );
+const ProductCatalog: React.FC = () => {
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const itemsPerPage = 10;
+  const totalItems = 450;
+
+  const handlePageChange = (pageNumber: number) => {
+    console.log(`Transitioned to page: ${pageNumber}`);
+    setCurrentPage(pageNumber);
+  };
+
+  return (
+    <div className="container py-4">
+      <h2>Catalog Page: {currentPage}</h2>
+      
+      {/* Renders standard Bootstrap pagination list elements */}
+      <Pagination
+        activePage={currentPage}
+        itemsCountPerPage={itemsPerPage}
+        totalItemsCount={totalItems}
+        pageRangeDisplayed={5}
+        onChange={handlePageChange}
+        itemClass="page-item"
+        linkClass="page-link"
+      />
+    </div>
+  );
 };
 
-export default App;
-
-
+export default ProductCatalog;
 ```
 
-A small example is provided here: https://codesandbox.io/s/replace-js-pagination-276mpq?file=/src/App.js
+---
 
-![Example](https://github.com/felipecarrillo100/replace-js-pagination/raw/main/pagination.png)
+## Styling and Themes
 
-## Params
+By default, the component is class-agnostic and yields a clean semantic `ul > li > a` hierarchy.
 
-Name | Type | Default | Description
---- | --- | --- | --- |
-`totalItemsCount` | Number | | **Required.** Total count of items which you are going to display
-`onChange` | Function | | **Required.** Page change handler. Receive pageNumber as arg
-`activePage` | Number | `1` | **Required.** Active page
-`itemsCountPerPage` | Number | `10` | Count of items per  page
-`pageRangeDisplayed` | Number | `5` | Range of pages in paginator, exclude navigation blocks (prev, next, first, last pages)
-`prevPageText` | String / ReactElement | `⟨` | Text of prev page navigation button
-`firstPageText` | String / ReactElement | `«` | Text of first page navigation button
-`lastPageText` | String / ReactElement | `»` | Text of last page navigation button
-`nextPageText` | String / ReactElement | `⟩` | Text of next page navigation button
-`getPageUrl` | Function | | Generate href attribute for page
-`innerClass` | String | `pagination` | Class name of `<ul>` tag
-`activeClass` | String | `active` | Class name of active `<li>` tag
-`activeLinkClass` | String |  | Class name of active `<a>` tag
-`itemClass` | String | | Default class of the `<li>` tag
-`itemClassFirst` | String | | Class of the first `<li>` tag
-`itemClassPrev` | String | | Class of the previous `<li>` tag
-`itemClassNext` | String | | Class of the next `<li>` tag
-`itemClassLast` | String | | Class of the last `<li>` tag
-`disabledClass` | String | `disabled` | Class name of the first, previous, next and last `<li>` tags when disabled
-`hideDisabled` | Boolean | `false` | Hide navigation buttons (prev, next, first, last) if they are disabled.
-`hideNavigation` | Boolean | `false` | Hide navigation buttons (prev page, next page)
-`hideFirstLastPages` | Boolean | `false` | Hide first/last navigation buttons
-`linkClass` | String | | Default class of the `<a>` tag
-`linkClassFirst` | String | | Class of the first `<a>` tag
-`linkClassPrev` | String | | Class of the previous `<a>` tag
-`linkClassNext` | String | | Class of the next `<a>` tag
-`linkClassLast` | String | | Class of the last `<a>` tag
+* **Bootstrap 3/4/5 Compatibility**: If your app uses Bootstrap, pass `itemClass="page-item"` and `linkClass="page-link"` (as shown above) to align perfectly.
+* **Tailwind CSS & Custom Styling**: If you use Tailwind, pass your custom classes directly into `innerClass`, `itemClass`, and `activeClass` for instant customization:
+  ```tsx
+  <Pagination
+    activePage={currentPage}
+    totalItemsCount={200}
+    onChange={handlePageChange}
+    innerClass="flex gap-1 justify-center list-none"
+    itemClass="px-3 py-1.5 border border-slate-700 rounded bg-slate-900 text-slate-300 hover:bg-slate-800"
+    activeClass="bg-sky-500! text-slate-950! border-sky-500!"
+  />
+  ```
+
+---
+
+## 🛠️ Props Reference
+
+Property | Type | Default | Description
+--- | --- | --- | ---
+`totalItemsCount` | `number` | | **Required.** Total count of items inside your dataset.
+`onChange` | `(pageNumber: number) => void` | | **Required.** Callback fired on page transitions.
+`activePage` | `number` | `1` | Selected active page.
+`itemsCountPerPage` | `number` | `10` | Size of a single page data block.
+`pageRangeDisplayed` | `number` | `5` | Maximum number of visible numeric links.
+`prevPageText` | `string \| ReactNode` | `⟨` | Text or React Node for the "Previous" link.
+`firstPageText` | `string \| ReactNode` | `«` | Text or React Node for the "First" link.
+`lastPageText` | `string \| ReactNode` | `»` | Text or React Node for the "Last" link.
+`nextPageText` | `string \| ReactNode` | `⟩` | Text or React Node for the "Next" link.
+`innerClass` | `string` | `"pagination"` | CSS class name applied to the wrapping `<ul>` element.
+`activeClass` | `string` | `"active"` | CSS class name applied to the active `<li>` element.
+`activeLinkClass` | `string` | `undefined` | CSS class name applied to the active `<a>` anchor tag.
+`disabledClass` | `string` | `"disabled"` | CSS class name applied to inactive terminal links (First/Prev/Next/Last).
+`hideDisabled` | `boolean` | `false` | Hide navigation links (first/prev/next/last) when they are disabled.
+`hideNavigation` | `boolean` | `false` | Hide previous/next page links entirely.
+`hideFirstLastPages` | `boolean` | `false` | Hide first/last page links entirely.
+`itemClass` | `string` | `undefined` | General CSS class applied to all `<li>` tags.
+`itemClassFirst` | `string` | `undefined` | Specific CSS class applied to the first `<li>` tag.
+`itemClassPrev` | `string` | `undefined` | Specific CSS class applied to the previous `<li>` tag.
+`itemClassNext` | `string` | `undefined` | Specific CSS class applied to the next `<li>` tag.
+`itemClassLast` | `string` | `undefined` | Specific CSS class applied to the last `<li>` tag.
+`linkClass` | `string` | `undefined` | General CSS class applied to all `<a>` tags.
+`linkClassFirst` | `string` | `undefined` | Specific CSS class applied to the first `<a>` tag.
+`linkClassPrev` | `string` | `undefined` | Specific CSS class applied to the previous `<a>` tag.
+`linkClassNext` | `string` | `undefined` | Specific CSS class applied to the next `<a>` tag.
+`linkClassLast` | `string` | `undefined` | Specific CSS class applied to the last `<a>` tag.
+
+---
+
+## 🧪 Development and Testing
+
+If you want to contribute or test changes locally, you can use our built-in scripts:
+
+### Running Unit Tests
+Unit specifications are located in `/tests/components` and run under **Vitest**:
+```bash
+# Run tests once
+npm run test
+
+# Run tests in watch mode
+npm run test:watch
+```
+
+### Running the Live Playground App
+To explore the live SaaS table view, themes, and interactive configurations:
+```bash
+# Serves the sandbox playground at http://localhost:8000
+npm run demo
+```
+
+### Compiling the Library
+To compile production bundle assets:
+```bash
+# Rebuilds CJS/ESM outputs and .d.ts files inside /dist
+npm run build
+```
+
+---
+
+## License
+
+MIT © [Felipe Carrillo](https://github.com/felipecarrillo100)
