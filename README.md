@@ -4,6 +4,8 @@
 
 Designed as a bit-for-bit, 100% backward-compatible, plug-and-play drop-in replacement for the unmaintained [react-js-pagination](https://github.com/wwwaiser/react-js-pagination) library. Rebuilt from the ground up to support modern React and modern tooling.
 
+👉 **[View the Live Demo & Theme Explorer](https://felipecarrillo100.github.io/replace-js-pagination/)**
+
 ---
 
 ## ⚡ What's New in v2.0.0
